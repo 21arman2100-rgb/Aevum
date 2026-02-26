@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIT - Unleash Your Potential</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #cc0000;
+            --bg-black: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        span.highlight {
+            color: var(--primary-red);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(204, 0, 0, 0.6);
+        }
+
+        /* Workout Programs */
+        .section-container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+        }
+
+        .card-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+
+        .card:hover .card-img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            width: 100%;
+        }
+
+        /* BMI Calculator */
+        .bmi-section {
+            background: #111;
+            padding: 60px 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--primary-red);
+            margin: 20px 0;
+        }
+
+        .bmi-display {
+            font-size: 3rem;
+            font-family: 'Oswald';
+            color: var(--primary-red);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1 class="reveal">UNLEASH YOUR <br><span class="highlight">POTENTIAL</span></h1>
+        <p class="reveal" style="max-width: 600px;">Our fitness hub is dedicated to helping you reach your peak performance through tailored programs and expert guidance.</p>
+        <a href="diet.html" class="btn-primary reveal">GET STARTED</a>
+    </header>
+
+    <section class="section-container">
+        <h2 class="section-title reveal">WORKOUT <span class="highlight">PROGRAMS</span></h2>
+        <div class="grid">
+            <div class="card reveal">
+              <a href="strength.html">  <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=60" alt="Strength" class="card-img">
+                <div class="card-content"></a>
+                    <h3>STRENGTH</h3>
+                    <p>Build muscle and increase power.</p>
+                </div>
+            </div>
+            <div class="card reveal">
+             <a href="cardio.html">   <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=500&q=60" alt="Cardio" class="card-img">
+                <div class="card-content"></a>
+                    <h3>CARDIO</h3>
+                    <p>Enhance endurance and heart health.</p>
+
+                </div>
+            </div>
+            <div class="card reveal">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=60" alt="Yoga" class="card-img">
+                <div class="card-content">
+                    <h3>YOGA</h3>
+                    <p>Improve flexibility and mindfulness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container reveal">
+        <div class="bmi-section">
+            <h2>BMI <span class="highlight">CALCULATOR</span></h2>
+            <p>Calculate your Body Mass Index to track your progress.</p>
+            <div style="max-width: 400px; margin: 30px auto;">
+                <label>Height: <span id="heightVal">170</span> cm</label>
+                <input type="range" min="100" max="220" value="170" id="height">
+                
+                <label>Weight: <span id="weightVal">70</span> kg</label>
+                <input type="range" min="30" max="150" value="70" id="weight">
+                
+                <div class="bmi-display" id="bmiResult">24.2</div>
+                <p id="bmiStatus" style="color: #4CAF50;">Healthy Weight</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container reveal" id="contact">
+        <h2 class="section-title">GET IN <span class="highlight">TOUCH</span></h2>
+        <div class="contact-form">
+            <div class="input-group">
+                <input type="text" placeholder="Full Name">
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Email Address">
+            </div>
+            <div class="input-group">
+                <select>
+                    <option>Select Program</option>
+                    <option>Strength Training</option>
+                    <option>Cardio Blast</option>
+                    <option>Yoga & Zen</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <textarea rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button class="btn-primary" style="border: none; width: 100%; cursor: pointer;">SEND MESSAGE</button>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="highlight">FIT</h2>
+        <div class="social-links">
+            <a href="#">FB</a> <a href="#">IG</a> <a href="#">TW</a>
+        </div>
+        <p>&copy; 2026 Fit Hub. Unleash Your Potential.</p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+
+        // Simple BMI Logic
+        const hInput = document.getElementById('height');
+        const wInput = document.getElementById('weight');
+        const bmiRes = document.getElementById('bmiResult');
+
+        function updateBMI() {
+            let h = hInput.value / 100;
+            let w = wInput.value;
+            let bmi = (w / (h * h)).toFixed(1);
+            bmiRes.innerHTML = bmi;
+            document.getElementById('heightVal').innerText = hInput.value;
+            document.getElementById('weightVal').innerText = wInput.value;
+        }
+
+        hInput.addEventListener('input', updateBMI);
+        wInput.addEventListener('input', updateBMI);
+    </script>
+</body>
+</html>
